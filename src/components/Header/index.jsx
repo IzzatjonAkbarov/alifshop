@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link, Links } from "react-router-dom";
+import { ShopContext } from "../../context/addtocartcontext";
 let im = "https://alifshop.uz/_ipx/s_113x32/images/alifshop-logo.svg";
 const Header = () => {
+  const { state } = useContext(ShopContext);
+
   return (
     <>
       <nav className="container1 flex items-center justify-between py-3">
-        <img className="w-[133px] h-[32px]" src={im} alt="" />
-
+        <Link to={"/"}>
+          <img className="w-[133px] h-[32px]" src={im} alt="" />
+        </Link>
         <button className="flex items-center gap-2 bg-[#FFBE1E] px-4 py-2 rounded-lg">
           <svg
             width="24"
@@ -59,7 +63,9 @@ const Header = () => {
             </svg>
           </button>
         </div>
-        <Link to={"/cart"} className="flex items-center text-xs gap-1 flex-col">
+        <Link
+          to={"/cart"}
+          className="flex items-center text-xs gap-1 flex-col relative">
           <svg
             width="24"
             height="24"
@@ -75,10 +81,17 @@ const Header = () => {
           </svg>
 
           <p>Savat</p>
+          {state.shop.length ? (
+            <p className=" absolute top-[-2px] right-0 rounded-full bg-red-500 text-white px-1 text-[10px]">
+              {state.shop.length}
+            </p>
+          ) : (
+            ""
+          )}
         </Link>
         <Link
           to={"/likes"}
-          className="flex items-center text-xs gap-1 flex-col">
+          className="flex items-center text-xs gap-1 flex-col relative">
           <svg
             width="24"
             height="24"
@@ -94,6 +107,13 @@ const Header = () => {
               strokeLinejoin="round"></path>
           </svg>
           <p>Saralanganlar</p>
+          {state.like.length ? (
+            <p className=" absolute top-[-2px] right-5 rounded-full bg-red-500 text-white px-1 text-[10px]">
+              {state.like.length}
+            </p>
+          ) : (
+            ""
+          )}
         </Link>
 
         <button className=" p-3 px-5 rounded-lg border bg-white border-amber-400 hover:bg-amber-200">

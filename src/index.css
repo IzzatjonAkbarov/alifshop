@@ -9,3 +9,6 @@
     margin: auto;
   }
 }
+button {
+  cursor: pointer;
+}

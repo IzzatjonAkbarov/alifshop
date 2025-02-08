@@ -1,17 +1,13 @@
-import React, { useContext, useEffect, useState } from "react";
-import { TbShoppingBagPlus } from "react-icons/tb";
-import { CiHeart } from "react-icons/ci";
+import React, { useContext, useState } from "react";
 import { ShopContext } from "../../../context/addtocartcontext";
-let like = JSON.parse(localStorage.getItem("like")) || [];
-let baseurl = import.meta.env.VITE_BASE_URL;
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-import { ToastContainer, toast } from "react-toastify";
-const SingleItem = ({ id, img, price, installment, storage, color, name }) => {
-  const [liked, setLiked] = useState(false);
+import { CiHeart } from "react-icons/ci";
+import { TbShoppingBagPlus } from "react-icons/tb";
+import { toast } from "react-toastify";
+
+const Likeiktem = ({ id, img, price, installment, storage, color, name }) => {
+  const [liked, setLiked] = useState(true);
   const { dispatch } = useContext(ShopContext);
-  let add = () => toast.success("Added to cart 🛒");
-  let likingcard = () => toast.success("Added to like 🛒");
-  let unlikingcard = () => toast.warning("Removed from like ");
+
   return (
     <div className=" rounded-2xl shadow-lg p-2 w-full bg-white">
       <div className="relative">
@@ -22,27 +18,11 @@ const SingleItem = ({ id, img, price, installment, storage, color, name }) => {
         />
         <button
           onClick={() => {
-            let toggledata = like.find((value) => value.id == id);
-            if (toggledata) {
-              like = like.filter((value) => value.id !== id);
-              localStorage.setItem("like", JSON.stringify(like));
-              dispatch({
-                type: "deletefromlike",
-                deletedId: id,
-              });
-              unlikingcard();
-              setLiked(false);
-            } else {
-              like.push({ id, img, price, installment, storage, color, name });
-              localStorage.setItem("like", JSON.stringify(like));
-              dispatch({
-                type: "addtolike",
-                product: { id, img, price, installment, storage, color, name },
-              });
-              setLiked(true);
-              likingcard();
-            }
-            //shu joyida ai ishlatdim
+            dispatch({
+              type: "deletefromlike",
+              deletedId: id,
+            }),
+              toast.error("Deleted from like");
           }}
           className={`p-2 rounded-full absolute top-0 right-0 ${
             liked ? "bg-red-500" : "bg-gray-200"
@@ -71,8 +51,7 @@ const SingleItem = ({ id, img, price, installment, storage, color, name }) => {
             dispatch({
               type: "add",
               product: { id, img, price, installment, storage, color, name },
-            }),
-              add();
+            });
           }}
           className="flex items-center w-full gap-2 bg-[#FFBE1E] text-white px-4 py-2 rounded-lg transition-all active:scale-95 hover:bg-[#ffbf1ec3]">
           <TbShoppingBagPlus className="w-5 h-5" /> Добавить в корзину
@@ -82,4 +61,4 @@ const SingleItem = ({ id, img, price, installment, storage, color, name }) => {
   );
 };
 
-export default SingleItem;
+export default Likeiktem;

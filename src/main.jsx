@@ -3,10 +3,12 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import { RouterProvider } from "react-router-dom";
 import { RuterComponent } from "./router";
-import MainContext from "./context/maincontext";
+import { ShopContextProvider } from "./context/addtocartcontext";
+import { ToastContainer } from "react-toastify";
 
 createRoot(document.getElementById("root")).render(
-  <MainContext>
+  <ShopContextProvider>
     <RouterProvider router={RuterComponent} />
-  </MainContext>
+    <ToastContainer />
+  </ShopContextProvider>
 );
