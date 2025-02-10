@@ -17,7 +17,7 @@ const SingleItem = ({ id, img, price, installment, storage, color, name }) => {
       <div className="relative">
         <img
           src={`${img}`}
-          alt="Google Pixel 5"
+          alt=""
           className="w-full h-40 object-contain mb-3"
         />
         <button
