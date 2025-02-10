@@ -16,7 +16,7 @@ const SingleItem = ({ id, img, price, installment, storage, color, name }) => {
     <div className=" rounded-2xl shadow-lg p-2 w-full bg-white">
       <div className="relative">
         <img
-          src={img}
+          src={`${img}`}
           alt="Google Pixel 5"
           className="w-full h-40 object-contain mb-3"
         />
