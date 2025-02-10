@@ -59,9 +59,11 @@ const SingleItem = ({ id, img, price, installment, storage, color, name }) => {
         <p>{color}</p>
       </div>
       <div className="flex  items-start mt-2 flex-col">
-        <p className="text-xl font-bold">{price?.toLocaleString()} so'm</p>
+        <p className="text-xl font-bold">
+          {price.toLocaleString().replace(/,/g, " ")} so'm
+        </p>
         <p className="text-sm text-gray-500">
-          12 x {installment?.toLocaleString()} so'm/oy
+          12 x {installment.toLocaleString().replace(/,/g, " ")} so'm/oy
         </p>
       </div>
       <div className="flex justify-between mt-4 w-full">
@@ -74,8 +76,8 @@ const SingleItem = ({ id, img, price, installment, storage, color, name }) => {
             }),
               add();
           }}
-          className="flex items-center w-full gap-2 bg-[#FFBE1E] text-white px-4 py-2 rounded-lg transition-all active:scale-95 hover:bg-[#ffbf1ec3]">
-          <TbShoppingBagPlus className="w-5 h-5" /> Добавить в корзину
+          className="flex btnlike items-center w-full gap-2 text-[13px] bg-[#FFBE1E] text-white px-4 py-2 rounded-lg transition-all active:scale-95 hover:bg-[#ffbf1ec3]">
+          <TbShoppingBagPlus className="w-5 h-5 " /> Добавить в корзину
         </button>
       </div>
     </div>

@@ -10,11 +10,11 @@ const Total = ({ shoptotal }) => {
     countoftheitem += value.counter;
   });
   return (
-    <div className=" w-[90%] mx-auto p-3 rounded-lg  bg-[#f6f6f6] h-fit">
+    <div className=" w-[90%] max-[780px]:w-full max-[780px]:my-4 mx-auto p-3 rounded-lg   bg-[#f6f6f6] h-fit">
       <div>
         <div className="flex items-center gap-3">
           <p>Jami:</p>
-          <p> {price.toLocaleString()} so'm</p>
+          <p> {price.toLocaleString().replace(/,/g, " ")} so'm</p>
         </div>
         <div className="flex flex-col mt-2.5 gap-x-1 text-sm text-gray-900 py-3 border-b border-b-gray-200">
           <div className="flex items-center gap-6 justify-between ">
@@ -27,7 +27,7 @@ const Total = ({ shoptotal }) => {
           </div>
         </div>
       </div>
-      <div className="mb-14 pb-4 md:pb-0 md:mb-0 fixed md:static left-0 right-0 px-4 md:px-0 bottom-0 w-full z-20">
+      <div className="mb-14 pb-4 flex flex-col justify-end   mt-auto px-4 md:px-0 bottom-0 w-full z-20">
         <button
           type="submit"
           className="transition duration-200 rounded-lg  disabled:bg-grey-100 disabled:border-grey-100 disabled:text-grey-300 flex items-center justify-center gap-2  bg-[#FFBE1E] border-2 border-[#FFBE1E] hover:bg-[#FFBE1E] hover:border-[#FFBE1E] active:bg-[#FFBE1E] active:border-[#FFBE1E]  relative mt-4 w-full font-medium !py-2 !px-4 md:!py-3 md:!px-5"

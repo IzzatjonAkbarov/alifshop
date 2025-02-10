@@ -29,7 +29,7 @@ const HomePage = () => {
       <br />
       {loading ? (
         <>
-          <div className=" container1 flex items-center gap-5 ">
+          <div className=" container1 grid grid-cols-5  max-[1128px]:grid-cols-4 max-[900px]:grid-cols-3 max-[665px]:grid-cols-2 max-[445px]:grid-cols-1 gap-5 ">
             <div
               role="status"
               className="w-full p-4 border border-gray-200 rounded-sm shadow-sm animate-pulse m">
@@ -203,7 +203,7 @@ const HomePage = () => {
           </div>
         </>
       ) : (
-        <div className="container1 grid grid-cols-5 gap-6">
+        <div className="container1 grid grid-cols-5 gap-6 max-[1128px]:grid-cols-4 max-[900px]:grid-cols-3 max-[665px]:grid-cols-2 max-[445px]:grid-cols-1">
           {slicedData.map((value) => (
             <SingleItem key={value.id} {...value} props={value} />
           ))}
@@ -213,7 +213,7 @@ const HomePage = () => {
         <button
           disabled={data.length == limit * page}
           onClick={() => setsearchparam({ page: parseInt(page) + 1 })}
-          className="w-full m-6 mx-auto p-4 bg-[#FFBE1E] hover:bg-[#ffbf1ec5] rounded-lg">
+          className="w-full text-white m-6 mx-auto p-4 bg-[#FFBE1E] hover:bg-[#ffbf1ec5] rounded-lg">
           Show 5 more
         </button>
       </div>

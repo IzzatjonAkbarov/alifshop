@@ -14,9 +14,13 @@ const Cartitem = ({
 }) => {
   const { dispatch } = useContext(ShopContext);
   return (
-    <div className="flex items-start gap-2 shadow-xl rounded-xl  p-5 border-b border-b-gray-300">
-      <div>
-        <img className="w-[90px] h-[70px]" src={img} alt="" />
+    <div className="flex items-start max-[450px]:flex-col gap-2 shadow-xl rounded-xl  p-5 border-b border-b-gray-300">
+      <div className="max-[450px]:mx-auto">
+        <img
+          className="w-[90px] h-[70px] max-[450px]:w-full max-[450px]:h-full "
+          src={img}
+          alt=""
+        />
       </div>
       <div className="w-full">
         <h1 className="text-sm font-medium mb-1">{name}</h1>
@@ -25,14 +29,16 @@ const Cartitem = ({
         <p>Color: {color}</p>
         <p>
           <span className="text-[12px] font-medium text-gray-400">Narx: </span>
-          <span className="text-gray-500 text-[14px]">{price}so'm</span>
+          <span className="text-gray-500 text-[14px]">
+            {price.toLocaleString().replace(/,/g, " ")}so'm
+          </span>
         </p>
-        <div className="bg-gray-50 p-2 rounded-md md:w-60 cursor-pointer mt-2.5">
+        <div className="bg-gray-50 p-2 rounded-md md:w-60 cursor-pointer max-[780px]:w-fit mt-2.5">
           <p className="text-gray-300 text-xs">Muddatli to'lov</p>
           <div className="flex justify-between items-center gap-10">
             <div className="text-sm font-medium m-0 flex gap-x-1 items-end">
               <p className="m-0 whitespace-nowrap">
-                {installment}
+                {installment.toLocaleString().replace(/,/g, " ")}
                 <span className="text-xs font-normal"> so'm</span>
               </p>
               <span className="nuxt-icon nuxt-icon--fill nuxt-icon--stroke text-gray-200 font-light w-2.5 h-2.5 mb-auto mt-1.5">
@@ -75,7 +81,7 @@ const Cartitem = ({
           </div>
         </div>
         <div className="flex items-center justify-between mt-5">
-          <div className="bg-gray-50   flex w-fit gap-3  items-center px-2 rounded-lg">
+          <div className="bg-gray-50   flex w-fit gap-3   items-center px-2 rounded-lg">
             <button
               onClick={() => {
                 counter !== 1

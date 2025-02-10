@@ -10,8 +10,8 @@ const CardPage = () => {
 
   return state.shop.length ? (
     <div className="container1 py-3">
-      <div className="grid items-starts grid-cols-[2fr_1fr]">
-        <div className="flex gap-5 flex-col ">
+      <div className="grid items-starts grid-cols-[2fr_1fr] max-[780px]:grid-cols-1">
+        <div className="flex gap-5 flex-col">
           {state.shop.map((value) => (
             <Cartitem key={value.id} {...value} />
           ))}
